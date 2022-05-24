@@ -1,1 +1,18 @@
-GET http://localhost:3000/todos
+GET http://localhost:3000/api/todos
+
+###
+
+POST http://localhost:3000/api/todos
+Content-Type: application/json
+
+{
+  "text": "Get straws"
+}
+
+### 
+
+DELETE http://localhost:3000/api/todos/628d355d227cb95dc0514ee6
+
+###
+
+PUT http://localhost:3000/api/todos/628d30d6481fe29533a3914c
