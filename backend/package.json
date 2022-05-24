@@ -8,10 +8,13 @@
   },
   "author": "Arthur Scott",
   "license": "ISC",
+  "type": "module",
   "dependencies": {
+    "chalk": "^5.0.1",
     "cors": "^2.8.5",
     "express": "^4.18.1",
     "mongoose": "^6.3.4",
+    "morgan": "^1.10.0",
     "nodemon": "^2.0.16"
   }
 }
