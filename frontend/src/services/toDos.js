@@ -30,8 +30,14 @@ export const createToDo = async () => {
   }
 }
 
-export const updateToDo = async (id) => {
-
+export const updateToDoComplete = async (id) => {
+  try {
+    const response = await api.get(`/todos/update/${id}`)
+    return response.data
+  }
+  catch (error) {
+    throw error
+  }
 }
 
 export const deleteToDo = async (id) => {

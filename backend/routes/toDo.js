@@ -5,7 +5,7 @@ const router = Router()
 
 router.get("/todos", controllers.getToDos)
 router.get("/todos/:id", controllers.getToDo)
-router.put("/todos/:id", controllers.updateToDo)
+router.get("/todos/update/:id", controllers.updateToDo)
 router.post("/todos/", controllers.createToDo)
 
 

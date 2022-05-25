@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { getToDos, getToDo } from "./services/toDos.js"
+import { getToDos, getToDo, updateToDoComplete } from "./services/toDos.js"
 
 
 
@@ -10,7 +10,6 @@ function App() {
 
   useEffect(() => {
     getAndSetToDos()
-    console.log(toDos)
   }, [])
 
   const getAndSetToDos = async () => {
@@ -24,19 +23,16 @@ function App() {
     }
   }
 
-  const completeToDo = async (id) => {
+  const completeToDo = async (id) => { 
+    const data = await updateToDoComplete(id)
     
-    const data = await getToDo(id)
-
-    console.log(data)
-
-    
-    // setToDos(todos => todos.map(todo => {
-    //   if (todo._id === data._id) {
-    //     todo.complete = data.complete
-    //   }
-    //   return todo
-    // }))
+    setToDos(toDos =>
+      toDos.map(todo => {
+      if (todo._id === data._id) {
+        todo.complete = data.complete
+      }
+       return todo
+    }))
   }
 
   return (

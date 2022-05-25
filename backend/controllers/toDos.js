@@ -19,11 +19,11 @@ export const getToDo = async (req, res) => {
     if (todo) {
       return res.json(todo)
     }
-    // res.status((400).res.json({error: "ToDo item not found!"}))
+    res.status((400).res.json({error: "ToDo item not found!"}))
   }
   catch (error) {
     console.log(error)
-    // res.status((500).json({ error: error.message }))
+    res.status((500).json({ error: error.message }))
   }
 }
 
