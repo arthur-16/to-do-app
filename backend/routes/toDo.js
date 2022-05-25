@@ -7,6 +7,7 @@ router.get("/todos", controllers.getToDos)
 router.get("/todos/:id", controllers.getToDo)
 router.get("/todos/update/:id", controllers.updateToDo)
 router.post("/todos/", controllers.createToDo)
+router.delete("/todos/:id", controllers.deleteToDo)
 
 
 

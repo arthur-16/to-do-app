@@ -42,8 +42,8 @@ export const updateToDoComplete = async (id) => {
 
 export const deleteToDo = async (id) => {
   try {
-    const response = api.get(`/todos/${id}`)
-    return response.data
+    api.delete(`/todos/${id}`)
+    return id
   }
   catch (error){
     throw error

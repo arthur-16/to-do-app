@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { getToDos, getToDo, updateToDoComplete } from "./services/toDos.js"
+import { getToDos, getToDo, updateToDoComplete, deleteToDo } from "./services/toDos.js"
 
 
 
@@ -35,6 +35,12 @@ function App() {
     }))
   }
 
+  const deleteToDoBtn = async (id) => {
+    const data = await deleteToDo(id)
+    
+    setToDos(toDos => toDos.filter(todo => todo._id !== data))
+  }
+
   return (
     <div className="App">
       <h1>Welcome Art!</h1>
@@ -49,10 +55,25 @@ function App() {
 
           <div className='text'>{ todo.text }</div>
 
-          <div className='delete-todo'>x</div>
+          <div className='delete-todo' onClick={() => deleteToDoBtn(todo._id)}>x</div>
           </div>
         ))}
       </div>
+      <div className="addPopup" onClick={() => setPopupActive(true)}>+</div>
+
+      {popupActive ? (
+        <div className="popup">
+          <div className="closePopup" onClick={() => setPopupActive(false)}>x</div>
+          <div className="content">
+            <h3>Add Task</h3>
+            <input 
+              type="text"
+              className="add-todo-input"
+              onChange={e => setNewToDo(e.target.value)}
+              value={newToDo} />
+          </div>
+        </div>
+      ) : ''}
     </div>
   );
 }
