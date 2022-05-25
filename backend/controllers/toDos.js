@@ -13,17 +13,17 @@ export const getToDos = async (req, res) => {
 
 export const getToDo = async (req, res) => {
   try {
-    const { id } = req.params.id
+    const { id } = req.params
     const todo = await ToDo.findById(id)
-    
+
     if (todo) {
       return res.json(todo)
     }
-    res.status((400).res.json({error: "ToDo item not found!"}))
+    // res.status((400).res.json({error: "ToDo item not found!"}))
   }
   catch (error) {
     console.log(error)
-    res.status((500).json({ error: error.message }))
+    // res.status((500).json({ error: error.message }))
   }
 }
 

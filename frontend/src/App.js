@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import {getToDos} from "./services/toDos.js"
+import { getToDos, getToDo } from "./services/toDos.js"
 
 
 
@@ -24,6 +24,20 @@ function App() {
     }
   }
 
+  const completeToDo = async (id) => {
+    
+    const data = await getToDo(id)
+
+    console.log(data)
+
+    
+    // setToDos(todos => todos.map(todo => {
+    //   if (todo._id === data._id) {
+    //     todo.complete = data.complete
+    //   }
+    //   return todo
+    // }))
+  }
 
   return (
     <div className="App">
@@ -34,7 +48,7 @@ function App() {
         {toDos.map(todo => (
           <div className=
             {"todo " + (todo.complete ? "is-complete" : "")}
-            key={todo._id}>
+            key={todo._id} onClick={() => completeToDo(todo._id)}>
           <div className="checkbox"></div>
 
           <div className='text'>{ todo.text }</div>
